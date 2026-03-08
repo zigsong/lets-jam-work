@@ -2,29 +2,50 @@
 <html>
   <head>
     <title>Lets Jam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:title" content="JAM! 째미난 밴드 라이프 커뮤니티" />
     <meta
       property="og:description"
       content="함께할 때 더 째미난 음악! 밴드 멤버를 찾고 있다면 렛츠잼에서 만나요."
     />
-    <meta property="og:image" content="https://letsjam.work/og-image.png" />
+    <meta
+      property="og:image"
+      content="https://letsjam.work/assets/og_image.png"
+    />
     <meta property="og:url" content="https://letsjam.work" />
     <meta property="og:type" content="website" />
-    <script>
-      (function () {
-        var path = window.location.pathname;
-        var appScheme = "letsjam:/" + path;
-        var appStoreUrl = "https://apps.apple.com/app/id6759896230";
-
-        window.location.href = appScheme;
-
-        setTimeout(function () {
-          window.location.href = appStoreUrl;
-        }, 2000);
-      })();
-    </script>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: sans-serif;
+        background: #111;
+        color: #fff;
+      }
+      a.btn {
+        margin-top: 20px;
+        padding: 14px 32px;
+        background: #ff6b35;
+        color: #fff;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
-    <h1>Lets Jam</h1>
+    <h2>Lets Jam</h2>
+    <p>앱에서 확인해보세요</p>
+    <a class="btn" id="openApp" href="">앱에서 열기</a>
+    <script>
+      var path = window.location.pathname;
+      var appScheme = "letsjam:/" + path;
+      document.getElementById("openApp").href = appScheme;
+    </script>
   </body>
 </html>
