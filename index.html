@@ -10,6 +10,22 @@
     <meta property="og:image" content="https://letsjam.work/og-image.png" />
     <meta property="og:url" content="https://letsjam.work" />
     <meta property="og:type" content="website" />
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        var appScheme = "letsjam:/" + path;
+        var appStoreUrl = "https://apps.apple.com/app/id6759896230";
+
+        var iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = appScheme;
+        document.body.appendChild(iframe);
+
+        setTimeout(function () {
+          window.location.href = appStoreUrl;
+        }, 2000);
+      })();
+    </script>
   </head>
   <body>
     <h1>Lets Jam</h1>
