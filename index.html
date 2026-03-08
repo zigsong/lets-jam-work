@@ -16,10 +16,7 @@
         var appScheme = "letsjam:/" + path;
         var appStoreUrl = "https://apps.apple.com/app/id6759896230";
 
-        var iframe = document.createElement("iframe");
-        iframe.style.display = "none";
-        iframe.src = appScheme;
-        document.body.appendChild(iframe);
+        window.location.href = appScheme;
 
         setTimeout(function () {
           window.location.href = appStoreUrl;
