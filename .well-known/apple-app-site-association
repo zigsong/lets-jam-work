@@ -2,13 +2,9 @@
   "applinks": {
     "details": [
       {
-        "appIDs": [
-          "J262X57F7K.com.chunkybuddy.letsjam"
-        ],
-        "components": [
-          {
-            "/": "/*"
-          }
+        "appID": "J262X57F7K.com.chunkybuddy.letsjam",
+        "paths": [
+          "/profiles/*"
         ]
       }
     ]
