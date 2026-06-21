@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JAM 프로필 여는 중…</title>
+    <!-- 카톡 등에서 링크 미리보기용 -->
+    <meta property="og:title" content="JAM! 째미난 밴드 라이프 커뮤니티" />
+    <meta
+      property="og:description"
+      content="함께할 때 더 째미난 음악! 밴드 멤버를 찾고 있다면 렛츠잼에서 만나요."
+    />
+    <meta
+      property="og:image"
+      content="https://letsjam.work/assets/og_image.png"
+    />
+    <meta property="og:type" content="website" />
+  </head>
+  <body
+    style="
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
+      padding-top: 40vh;
+      color: #555;
+    "
+  >
+    <p>앱으로 이동 중이에요…</p>
+    <script>
+      (function () {
+        // 앱 미설치 시 폴백 (정식 출시 후 App Store URL로 교체)
+        var FALLBACK = "https://testflight.apple.com/join/4SkcswPx";
+
+        // 현재 경로(/profiles/{id})에서 id 추출 — 200 rewrite라 URL은 그대로 유지됨
+        var m = location.pathname.match(/\/profiles\/([^\/?#]+)/);
+        var id = m ? m[1] : null;
+        if (!id) {
+          location.href = FALLBACK;
+          return;
+        }
+
+        var scheme = "letsjam://profiles/" + id;
+        var ua = navigator.userAgent;
+
+        // 카카오톡 인앱 브라우저: 커스텀 스킴이 막히므로 외부 브라우저(Safari)로 다시 오픈
+        // → Safari에서 이 페이지가 다시 로드되며 letsjam:// 시도
+        if (/KAKAOTALK/i.test(ua)) {
+          location.href =
+            "kakaotalk://web/openExternal?url=" +
+            encodeURIComponent(location.href);
+          return;
+        }
+
+        // 앱이 열리면 페이지가 백그라운드로 가서 타이머가 취소됨 → 폴백 안 함
+        var t = setTimeout(function () {
+          location.href = FALLBACK;
+        }, 1500);
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) clearTimeout(t);
+        });
+
+        location.href = scheme; // 앱 열기 시도
+      })();
+    </script>
+  </body>
+</html>
