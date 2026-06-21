@@ -1,2 +1,2 @@
 /share/* https://testflight.apple.com/join/4SkcswPx  302
-/profiles/* /open-app.html  200
+/profiles/:id /open-app?id=:id  302

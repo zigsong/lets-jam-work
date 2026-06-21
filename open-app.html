@@ -30,9 +30,12 @@
         // 앱 미설치 시 폴백 (정식 출시 후 App Store URL로 교체)
         var FALLBACK = "https://testflight.apple.com/join/4SkcswPx";
 
-        // 현재 경로(/profiles/{id})에서 id 추출 — 200 rewrite라 URL은 그대로 유지됨
-        var m = location.pathname.match(/\/profiles\/([^\/?#]+)/);
-        var id = m ? m[1] : null;
+        // id 추출: 쿼리스트링(?id=) 우선, 없으면 경로(/profiles/{id})에서
+        var id = new URLSearchParams(location.search).get("id");
+        if (!id) {
+          var m = location.pathname.match(/\/profiles\/([^\/?#]+)/);
+          id = m ? m[1] : null;
+        }
         if (!id) {
           location.href = FALLBACK;
           return;
